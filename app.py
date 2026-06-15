@@ -1,15 +1,13 @@
 import streamlit as st
 from ai_engine import ask_ai
 
-st.title("Study Genie AI")
+st.title("StudyGenie AI")
 
-option = st.selectbox(
-    "Choose Feature",
-    ["Doubt Solver", "Study Planner", "Quiz", "Motivation", "Career"]
-)
+user_input = st.text_input("Ask your question")
 
-user_input = st.text_input("Enter here")
-
-if st.button("Submit"):
-    output = ask_ai(user_input)
-    st.write(output)
+if st.button("Send"):
+    if user_input.strip() != "":
+        response = ask_ai(user_input)
+        st.write(response)
+    else:
+        st.write("Please type something first.")
