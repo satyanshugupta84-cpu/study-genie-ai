@@ -1,14 +1,15 @@
-def ask_ai(prompt):
-    prompt = prompt.lower()
+import streamlit as st
+from ai_engine import ask_ai
 
-    if "study plan" in prompt:
-        return "Study 2 hours daily and revise every weekend."
+st.title("Study Genie AI")
 
-    elif "quiz" in prompt:
-        return "1. What is AI? A) Artificial Intelligence"
+option = st.selectbox(
+    "Choose Feature",
+    ["Doubt Solver", "Study Planner", "Quiz", "Motivation", "Career"]
+)
 
-    elif "career" in prompt:
-        return "Learn Python, Machine Learning and AI Projects."
+user_input = st.text_input("Enter here")
 
-    else:
-        return f"You asked: {prompt}"
+if st.button("Submit"):
+    output = ask_ai(user_input)
+    st.write(output)
